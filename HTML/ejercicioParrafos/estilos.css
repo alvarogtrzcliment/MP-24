@@ -1,0 +1,39 @@
+#estilo1{
+  color:green
+}
+
+p{
+  font-size: 15px;
+
+}
+
+
+
+button{
+  padding: 10px;
+  color:blue;
+}
+
+button{
+  color:red;
+}
+
+
+#elemento-padre{
+  flex-direction: column;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+}
+
+.elemento-hijo{
+  padding:15px;
+  background-color: aqua;
+  border-radius: 15px;
+  margin:15px;
+  height:20px
+}
+
+#enlace2{
+  height: 200px;
+}

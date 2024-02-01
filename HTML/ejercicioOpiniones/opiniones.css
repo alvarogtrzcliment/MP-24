@@ -1,0 +1,34 @@
+
+.opinion{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.centro-salud{
+  display: flex;
+  align-items: center;
+}
+
+.texto-centro{
+  display: felx;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+
+  & h3{
+    margin:0
+  }
+
+  & button{
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+}
+
+.comentarios-nota{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

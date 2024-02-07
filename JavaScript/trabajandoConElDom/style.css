@@ -1,0 +1,37 @@
+
+body{
+  margin: 0;
+  font-family: monospace;
+  & .componente{
+    margin: 5%;
+    border-style: solid;
+    padding: 5%;
+    border-radius: 5%;
+    background-color: rgb(254, 232, 206);
+    & header{
+      display: flex;
+      align-items: center;
+      gap:5%;
+      & img{
+        width:100px
+      }
+    }
+
+    & .botones{
+      display: flex;
+      justify-content: space-evenly;
+
+      & button{
+
+        padding: 3%;
+        border-radius: 15px;
+        background-color: rgb(156, 211, 243);
+      
+      }
+    }
+  }
+}
+
+.oscuro{
+  background-color: black;
+}

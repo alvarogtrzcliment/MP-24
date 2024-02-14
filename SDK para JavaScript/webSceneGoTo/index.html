@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Añadir WebScene</title>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.28/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.28/"></script>
+
+    <script defer src="function.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      #viewDiv {
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .posicion {
+        position: absolute;
+        bottom: 30px;
+        width: 100vw;
+
+        & .contenedor-botones {
+          display: flex;
+          justify-content: space-around;
+
+          & button {
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+
+            color: #8fe2df;
+            background-color: rgba(100, 215, 194, 0.256);
+            border: 1px solid rgba(0, 255, 204, 0.139);
+            backdrop-filter: blur(10px);
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+
+    <div class="posicion">
+      <div class="contenedor-botones">
+        <button id="cam1">Camara 1</button>
+        <button id="cam2">Camara 2</button>
+        <button id="cam3">Camara 3</button>
+        <button id="cam4">Camara 4</button>
+      </div>
+    </div>
+  </body>
+</html>

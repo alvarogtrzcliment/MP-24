@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Múltiple</title>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.27/esri/themes/dark/main.css"
+    />
+    <script src="https://js.arcgis.com/4.27/"></script>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <script>
+      require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/FeatureLayer",
+        "esri/rest/support/Query",
+        "esri/layers/GraphicsLayer",
+
+      ], // Cargamos los módulos necesarios para la aplicación web
+
+      function (Map, MapView, FeatureLayer, Query, GraphicsLayer) {
+
+        // Construimos el objeto mapa
+
+        var map = new Map({
+          basemap: "hybrid",
+        });
+
+        // Construimos el objeto vista
+
+        var view = new MapView({
+          container: "viewDiv",
+          map: map,
+          center: [-4, 40],
+          zoom: 6,
+        });
+
+        // Construimos las capas
+
+        const incendiosFL = new FeatureLayer({
+          url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/MODIS_Thermal_v1/FeatureServer",
+        });
+
+        const paisesMundoFL = new FeatureLayer({
+          url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries/FeatureServer/0",
+        });
+
+        // Construimos una capa gráfica para guardar los resultados
+
+        const resultadoGL = new GraphicsLayer();
+
+        //Ralizo una consulta a la capa de paises del mundo para seleccionar España.
+
+        var queryEspaña = new Query({
+          where: "ISO_CC = 'ESP'",
+          returnGeometry: true,
+          outFields: ["COUNTRY"],
+        });
+
+        paisesMundoFL.queryFeatures(queryEspaña)
+          .then(function (results) {
+            // El resultado es un array de 9 objetos
+
+            results.features.map((poligono) => {
+
+              //Segunda Query, selección de todos los incendios que se encuentren en España y tenga un valor de confidencia mayor de 50
+
+              const queryPoligonos = new Query({
+                geometry: poligono.geometry,
+                spatialRelationship: "contains",
+                returnGeometry: true,
+                where: "CONFIDENCE > 50",
+              });
+
+              // Aplicamos la Query a la capa de incendios
+
+              incendiosFL.queryFeatures(queryPoligonos)
+                .then(function (results) {
+                  // Gestionamos los resultados de la query 
+                  results.features.map((entidad) => {
+                    // Le pasamos una simbología
+                    entidad.symbol = {
+                      type: "picture-marker", 
+                      url: "https://cdn-icons-png.flaticon.com/512/1172/1172477.png?w=740&t=st=1686904179~exp=1686904779~hmac=88debfe6e746b67f6d5ea14f8b3de9cda0bb4863f2853270d04519720ffda663",
+                      width: "64px",
+                      height: "64px",
+                    };
+
+                    // Añadimos las entidades a la capa gráfica que creamos al inicio
+                    resultadoGL.add(entidad);
+                  });
+                });
+            });
+
+            // Añadimos la capa gráfica al mapa con los resultados
+
+            map.add(resultadoGL);
+          })
+      });
+    </script>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>

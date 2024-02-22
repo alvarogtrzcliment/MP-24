@@ -64,11 +64,12 @@ require([
       geometry:evento.mapPoint,
       spatialReference: 'intersects',
       returnGeometry: true,
-      outFields:['*']
+      outFields:[]
     })
 
     municipiosFL.queryFeatures(parametrosQuery)
       .then((resultados)=>{
+        console.log(resultados)
         capaGrafica.removeAll()
         
         let features = resultados.features.map((elemento)=>{

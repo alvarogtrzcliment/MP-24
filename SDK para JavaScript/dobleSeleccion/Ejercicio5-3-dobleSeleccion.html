@@ -111,8 +111,12 @@
             // Añadimos la capa gráfica al mapa con los resultados
 
             map.add(resultadoGL);
+          }).catch((error)=>{
+            console.log(error)
+            alert(error.details.messages[0])
           })
-      });
+      })
+
     </script>
   </head>
   <body>

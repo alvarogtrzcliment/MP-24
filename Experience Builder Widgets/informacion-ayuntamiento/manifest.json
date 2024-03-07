@@ -1,0 +1,15 @@
+{
+  "name": "informacion-ayuntamiento",
+  "label": "Información Ayuntamiento",
+  "type": "widget",
+  "version": "1.13.0",
+  "exbVersion": "1.13.0",
+  "author": "Álvaro Gutiérrez",
+  "description": "Este Widget Contiene la información del Ayuntamiento de Madrid",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {},
+  "translatedLocales": [
+    "en"
+  ]
+}

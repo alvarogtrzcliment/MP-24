@@ -1,0 +1,15 @@
+{
+  "name": "primer-widget",
+  "label": "Primer Widget",
+  "type": "widget",
+  "version": "1.13.0",
+  "exbVersion": "1.13.0",
+  "author": "Álvaro Gutiérrez",
+  "description": "Prueba con nuestro primer Widget",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {},
+  "translatedLocales": [
+    "en"
+  ]
+}

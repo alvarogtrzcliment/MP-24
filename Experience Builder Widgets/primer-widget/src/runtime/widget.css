@@ -1,0 +1,7 @@
+.primerWidget{
+  background-color: rgba(127, 255, 212, 0.119);
+  backdrop-filter:blur(5px);
+  border-radius: 15px;
+  padding: 10px;
+  border-width: 2px;
+}

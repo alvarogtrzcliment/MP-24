@@ -1,0 +1,13 @@
+{
+  "name": "informacion-mapa",
+  "label": "Información del Mapa",
+  "type": "widget",
+  "version": "1.13.0",
+  "exbVersion": "1.13.0",
+  "author": "Álvaro Gutiérrez",
+  "description": "Widget que enseña la información del mapa activo",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {},
+  "dependency": ["jimu-arcgis"]
+}

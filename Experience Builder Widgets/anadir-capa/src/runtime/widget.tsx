@@ -10,20 +10,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   // Si quiero trabajar con la vista fuera del activeViewHandler uso el estado
   const [vistaActiva, setVistaActiva] = useState<JimuMapView>()
   const [url, setUrl] = useState<string>()
-  const [contenidoRenderizado, setContenidoRenderizado] = useState(<h3>Selecciona el Mapa</h3>)
-
-  function activeViewHandler (jmv: JimuMapView) {
-    if (jmv) {
-      setContenidoRenderizado(
-        <>
-          <input type="text" onChange={inputHandler}/>
-          <Button onClick={buttonHandler}>Añadir Capa</Button>
-        </>
-      )
-
-      setVistaActiva(jmv)
-    }
-  }
+  let contenidoRenderizado = (<h3>Selecciona el mapa</h3>)
 
   function inputHandler (evento) {
     setUrl(evento.target.value)
@@ -35,6 +22,21 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     })
 
     vistaActiva.view.map.add(capaFl)
+  }
+
+  if (vistaActiva !== undefined) {
+    contenidoRenderizado = (
+      <>
+        <input type="text" onChange={inputHandler}/>
+        <Button onClick={buttonHandler}>Añadir Capa</Button>
+      </>
+    )
+  }
+
+  function activeViewHandler (jmv: JimuMapView) {
+    if (jmv) {
+      setVistaActiva(jmv)
+    }
   }
 
   return (

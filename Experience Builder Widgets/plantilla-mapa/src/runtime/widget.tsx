@@ -33,7 +33,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
           </JimuMapViewComponent>
         )
       }
-      <Button onClick={mostrarInfo}>Mostrar información del JimuMapView</Button>
+      <Button onClick={mostrarInfo}>Rota el Mapa</Button>
     </div>
   )
 }

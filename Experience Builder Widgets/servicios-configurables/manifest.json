@@ -1,0 +1,13 @@
+{
+  "name": "servicios-configurables",
+  "label": "Servicios configurables",
+  "type": "widget",
+  "version": "1.13.0",
+  "exbVersion": "1.13.0",
+  "author": "Álvaro Gutiérrez",
+  "description": "Plantilla para poder trabajar con el JimuMapView",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {},
+  "dependency":["jimu-arcgis"]
+}
